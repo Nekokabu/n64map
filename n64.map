@@ -1,0 +1,342 @@
+#Nintendo 64 MAP 
+
+#
+# os_boot_config_t
+#
+800001a0:
+.word	leoBootID
+80000300:
+.word	osTvType	;1 = NTSC, 0 = PAL, 2 = MPAL (hardcoded in PIF BootROM)
+.word	osRomType	;0 = GamePack, 1 = DD
+.word	osRomBase	;base address for cart ROM or IPL (0xB0000000 for GamePack, 0xA6000000 for DD)
+.word	osResetType	;0 = ColdReset, 1 = NMI (an exception), 2 = reset to boot disk
+.word	osCicId
+.word	osVersion
+.word	osMemSize
+.word	osAppNMIBuffer
+#
+# iQue
+#
+#
+8000035c:
+.word	__osBbEepromAddress
+.word	__osBbEepromSize
+.word	__osBbFlashAddress
+.word	__osBbFlashSize
+.word	__osBbSramAddress
+80000370:
+.word	__osBbSramSize
+.word	__osBbPakAddress
+.word	__osBbPakAddress
+.word	__osBbPakAddress
+.word	__osBbPakAddress
+80000384:
+.word	__osBbPakSize
+.word	__osBbIsBb
+.word	__osBbHackFlags
+.word	__osBbStashMagic
+80000394:
+.word	__osBbPakBindings
+.word	__osBbPakBindings
+.word	__osBbPakBindings
+.word	__osBbPakBindings
+800003a4:
+.word	__osBbStateName
+.word	__osBbStateName
+.word	__osBbStateName
+.word	__osBbStateName
+.word	__osBbStateDirty
+.word	__osBbAuxDataLimit
+# RDRAM Registers
+#
+03f00000:
+.word	RDRAM_CONFIG_REG 
+.word	RDRAM_DEVICE_ID_REG
+.word	RDRAM_DELAY_REG
+.word	RDRAM_MODE_REG
+.word	RDRAM_REF_INTERVAL_REG
+.word	RDRAM_REF_ROW_REG
+.word	RDRAM_RAS_INTERVAL_REG
+.word	RDRAM_MIN_INTERVAL_REG
+.word	RDRAM_ADDR_SELECT_REG
+.word	RDRAM_DEVICE_MANUF_REG
+#
+# (SP) Signal Processor Registers
+#
+04000000:
+.word	SP_DMEM 
+04001000:
+.word	SP_IMEM 
+04040000:
+.word	SP_MEM_ADDR_REG ;Master, SP memory address
+.word	SP_DRAM_ADDR_REG 
+.word	SP_RD_LEN_REG 
+.word	SP_WR_LEN_REG 
+04040010:
+.word	SP_STATUS_REG 
+.word	SP_DMA_FULL_REG 
+.word	SP_DMA_BUSY_REG 
+.word	SP_SEMAPHORE_REG 
+04080000:
+.word	SP_PC_REG 
+.word	SP_IBIST_REG 
+#
+# (DP) Display Processor Command Registers (Rasterizer interface)
+#
+04100000:
+.word	DPC_START_REG 
+.word	DPC_END_REG 
+.word	DPC_CURRENT_REG 
+.word	DPC_STATUS_REG 
+.word	DPC_CLOCK_REG 
+.word	DPC_BUFBUSY_REG 
+.word	DPC_PIPEBUSY_REG 
+.word	DPC_TMEM_REG 
+#
+# (DP) Display Processor Span Registers
+#
+04200000:
+.word	DPS_TBIST_REG 
+.word	DPS_TEST_MODE_REG 
+.word	DPS_BUFTEST_ADDR_REG 
+.word	DPS_BUFTEST_DATA_REG 
+#
+# MIPS Interface (MI) Registers
+#
+04300000:
+.word	MI_INIT_MODE_REG 
+.word	MI_VERSION_REG 
+.word	MI_INTR_REG 
+.word	MI_INTR_MASK_REG 
+#
+# Added iQue 
+#
+04300010:
+.word	MI_CTRL
+.word	MI_SEC_MODE
+.word	MI_SEC_TIMER
+.word	MI_SEC_VTIME
+.word	MI_ERR_ADDR
+.word	MI_ERR_DATA
+.word	MI_ERR_INFO
+.word	MI_RANDOM
+.word	MI_AVCTRL
+04300038:
+.word	MI_EINTR
+.word	MI_EMASK
+#
+# Video Interface (VI) Registers
+#
+04400000:
+.word	VI_STATUS_REG 
+.word	VI_ORIGIN_REG 
+.word	VI_WIDTH_REG 
+.word	VI_INTR_REG 
+.word	VI_CURRENT_REG 
+.word	VI_BURST_REG 
+.word	VI_V_SYNC_REG 
+.word	VI_H_SYNC_REG 
+.word	VI_LEAP_REG 
+.word	VI_H_START_REG 
+.word	VI_V_START_REG 
+.word	VI_V_BURST_REG 
+.word	VI_X_SCALE_REG 
+.word	VI_Y_SCALE_REG 
+#
+# Audio Interface (AI) Registers
+#
+04500000:
+.word	AI_DRAM_ADDR_REG 
+.word	AI_LEN_REG 
+.word	AI_CONTROL_REG 
+.word	AI_STATUS_REG 
+.word	AI_DACRATE_REG 
+.word	AI_BITRATE_REG 
+#
+# Peripheral/Parallel Interface (PI) Registers
+#
+04600000:
+.word	PI_DRAM_ADDR_REG  
+.word	PI_CART_ADDR_REG 
+.word	PI_RD_LEN_REG 
+.word	PI_WR_LEN_REG 
+.word	PI_STATUS_REG 
+.word	PI_BSD_DOM1_LAT_REG 
+.word	PI_BSD_DOM1_PWD_REG 
+.word	PI_BSD_DOM1_PGS_REG 
+.word	PI_BSD_DOM1_RLS_REG 
+.word	PI_BSD_DOM2_LAT_REG 
+.word	PI_BSD_DOM2_PWD_REG 
+.word	PI_BSD_DOM2_PGS_REG 
+.word	PI_BSD_DOM2_RLS_REG 
+#
+# Added iQue
+#
+04600048:
+.word	PI_CARD_ADDR_REG
+0460004c:
+.word	PI_CARD_CONFIG_REG
+04600050:
+.word	PI_AES_CTRL  
+04600058:
+.word	PI_EX_RD_LEN_REG
+.word	PI_EX_WR_LEN_REG
+.word	PI_MISC_REG
+.word	PI_CARD_BLK_OFFSET_REG
+04610000:
+.word	PI_AES_DATA_OUT	;0x200
+04610420:
+.byte	PI_AES_EKEY_START
+046104cf:
+.byte	PI_AES_EKEY_END
+046104f0:
+.byte	PI_AES_INIT_START
+046104df:
+.byte	PI_AES_INIT_END
+046e0000:
+.half	PI_RDB_REQ_HI_REG
+046e0002:
+.half	PI_RDB_REQ_LO_REG
+
+#
+# Added iQue - Flash Controller
+#
+04600070:
+.word	PI_FLASH_ADDR  
+04600048:
+.word	PI_FLASH_CTRL  
+.word	PI_FLASH_CONF  
+#
+# Added iQue - Address Translation Block
+#
+04600040:
+.byte	PI_ATBU
+04610500:
+.word	PI_BUF_ATB  
+04610800:
+.word	PI_BUF_ATBU  
+#
+# Added iQue - IO Bus Controller
+#
+04600064:
+.word	PI_IDE_CONF  
+.word	PI_IDE_CTRL  
+04680000:
+.word	PI_IDE0  
+046a0000:
+.word	PI_IDE1  
+046c0000:
+.word	PI_IDE2  
+046e0000:
+.word	PI_IDE3  
+04620000:
+.word	PI_IDE_FC  
+#
+# Added iQue - General Purpose IO Signals
+#
+04600060:
+.word	PI_GPIO  
+#
+# Added iQue - PI Buffer DMA
+#
+04600058:
+.word	PI_DMA_BREAD  
+.word	PI_DMA_BWRITE  
+#
+# Added iQue - PI Error Reporting
+#
+04600044:
+.word	PI_ERROR  
+0460006c:
+.word	PI_EDATA  
+#
+# Added iQue - PI Access Control
+#
+04600054:
+.word	PI_ACCESS  
+#
+# Added iQue - USB Interface (UI)
+#
+04900000:
+.word	PI_ACCESS  
+
+
+#
+# RDRAM Interface (RI) Registers
+#
+04700000:
+.word	RI_MODE_REG 
+.word	RI_CONFIG_REG 
+.word	RI_CURRENT_LOAD_REG 
+.word	RI_SELECT_REG 
+04700010:
+.word	RI_REFRESH_REG 
+.word	RI_LATENCY_REG 
+.word	RI_RERROR_REG 
+.word	RI_WERROR_REG 
+
+#
+# Serial Interface (SI) Registers
+#
+04800000:
+.word	SI_DRAM_ADDR_REG
+.word	SI_PIF_ADDR_RD64B_REG
+04800010:
+.word	SI_PIF_ADDR_WR64B_REG
+04800018:
+.word	SI_STATUS_REG
+#
+# Added iQue 
+#
+0480001c:
+.word	SI_CONFIG
+0480000c:
+.word	SI_CTRL
+#
+# iQue USB
+#
+04940010:
+.word	USB0_STATUS_REG
+04a40010:
+.word	USB1_STATUS_REG
+
+#
+# 64DD ASIC regiseter
+#
+05000000:
+.word	ASIC_C2_BUFF
+05000400:
+.word	ASIC_SECTOR_BUFF
+05000580:
+.word	MSEQ_RAM_ADDR
+05000500:
+.word	ASIC_DATA
+.word	ASIC_MISC_REG
+.word	ASIC_CMD
+.word	ASIC_CUR_TK
+05000510:
+.word	ASIC_BM_STATUS
+.word	ASIC_ERR_SECTOR
+.word	ASIC_SEQ_STATUS
+.word	ASIC_CUR_SECTOR
+05000520:
+.word	ASIC_HARD_RESET
+.word	ASIC_C1_S0
+.word	ASIC_HOST_SECBYTE
+.word	ASIC_C1_S2
+05000530:
+.word	ASIC_SEC_BYTE
+.word	ASIC_C1_S4
+.word	ASIC_C1_S6
+.word	ASIC_CUR_ADDR
+05000540:
+.word	ASIC_ID_REG
+.word	ASIC_TEST_REG
+.word	ASIC_TEST_PIN_SEL
+#
+# PIF
+#
+1fc00000:
+.code	PIF Boot ROM
+1fc007c0:
+.code	PIF RAM
